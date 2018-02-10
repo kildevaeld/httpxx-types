@@ -1,7 +1,6 @@
 
 set(SOURCES
     header.cpp
-    request.cpp
     url.cpp
 )
 
