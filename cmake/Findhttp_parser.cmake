@@ -10,8 +10,8 @@ find_path(HTTP_PARSER_INCLUDE_DIR csystem.h
 find_library(HTTP_PARSER_LIBRARY NAMES csystem HTTP_PARSER_crypto
              HINTS ${PC_HTTP_PARSER_LIBDIR} ${PC_HTTP_PARSER_LIBRARY_DIRS} )
 
-include(FindPackageHandleStandardArgs)
-                      HTTP_PARSER_LIBRARY HTTP_PARSER_INCLUDE_DIR)
+#include(FindPackageHandleStandardArgs)
+#                      HTTP_PARSER_LIBRARY HTTP_PARSER_INCLUDE_DIR)
 
 if(NOT HTTP_PARSER_LIBRARY)
     add_library(http_parser ${PROJECT_SOURCE_DIR}/vendor/http-parser/http_parser.c)
