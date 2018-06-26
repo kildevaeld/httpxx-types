@@ -3,7 +3,7 @@
 #include <map>
 #include <sstream>
 #include <string>
-namespace httpxx_types {
+namespace httptypes {
 
 static std::string url_encode(const std::string &in) {
   std::string out;
@@ -12,14 +12,10 @@ static std::string url_encode(const std::string &in) {
     if (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z') ||
         ('0' <= c && c <= '9')) {
       out.push_back(c);
-      // putchar(c);
     } else {
-      // putchar('%');
       out.push_back('%');
       out.push_back(hex[c >> 4]);
       out.push_back(hex[c & 15]);
-      // putchar(hex[c >> 4]);
-      // putchar(hex[c & 15]);
     }
   }
   return out;
@@ -124,4 +120,4 @@ private:
   std::string m_fragment;
   bool m_valid = false;
 };
-} // namespace httpxx_types
+} // namespace httptypes

@@ -1,6 +1,6 @@
 #pragma once
 #include <ostream>
-namespace httpxx_types {
+namespace httptypes {
 enum StatusCode {
   // Informal
   StatusContinue = 100,           // RFC 7231, 6.2.1
@@ -77,4 +77,4 @@ bool statuscode_is_clienterror(StatusCode);
 bool statuscode_is_informal(StatusCode);
 bool statuscode_is_servererror(StatusCode);*/
 
-} // namespace httpxx_types
+} // namespace httptypes

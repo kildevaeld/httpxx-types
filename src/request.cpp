@@ -12,7 +12,7 @@ static bool iequals(const std::string &a, const std::string &b) {
 
 static const char *const kCRLF = "\r\n";
 
-namespace httpxx_types {
+namespace httptypes {
 
 std::ostream &operator<<(std::ostream &s, Version v) {
   switch (v) {
@@ -35,7 +35,7 @@ public:
   Method method = Method::Get;
   Header header;
   Version version = Version::OneOne;
-  std::unique_ptr<ReadableStream> body;
+  std::unique_ptr<streams::ReadableStream> body;
 };
 } // namespace internal
 
@@ -87,16 +87,16 @@ Request &Request::set_method(const Method method) {
 Header &Request::header() { return d->header; }
 void Request::set_header(const Header &header) { d->header = header; }
 
-ReadableStream *Request::body() const { return d->body.get(); }
-Request &Request::set_body(ReadableStream *stream) {
+streams::ReadableStream *Request::body() const { return d->body.get(); }
+Request &Request::set_body(streams::ReadableStream *stream) {
   d->body.reset(stream);
   return *this;
 }
-Request &Request::set_body(std::unique_ptr<ReadableStream> &&stream) {
+Request &Request::set_body(std::unique_ptr<streams::ReadableStream> &&stream) {
   d->body = std::move(stream);
 }
 
-void Request::write(WritableStream &stream) {
+void Request::write(streams::WritableStream &stream) {
   std::stringstream s;
   s << d->method << " ";
   s << d->url.full_path();
@@ -124,7 +124,7 @@ void Request::write(WritableStream &stream) {
        chunked = false;
 
   if (has_body) {
-    auto seekable = dynamic_cast<SeekableStream *>(d->body.get());
+    auto seekable = dynamic_cast<streams::SeekableStream *>(d->body.get());
     if (seekable && !has_cl) {
       s << "Content-Length: " << seekable->size() << kCRLF;
     } else {
@@ -192,7 +192,7 @@ std::ostream &operator<<(std::ostream &s, const Request &r) {
   bool has_body = r.d->body.operator bool(), chunked = false;
 
   if (has_body) {
-    auto seekable = dynamic_cast<SeekableStream *>(r.d->body.get());
+    auto seekable = dynamic_cast<streams::SeekableStream *>(r.d->body.get());
     if (seekable && !has_cl) {
       s << "Content-Length: " << seekable->size() << kCRLF;
     } else {
@@ -242,4 +242,4 @@ if (r.d->body.size() > 0) {
   return s;
 }
 
-} // namespace httpxx_types
+} // namespace httptypes

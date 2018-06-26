@@ -1,7 +1,7 @@
 #pragma once
 #include <ostream>
 
-namespace httpxx_types {
+namespace httptypes {
 
 enum class Method {
   Get,

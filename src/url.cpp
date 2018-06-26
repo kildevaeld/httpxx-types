@@ -3,7 +3,7 @@
 #include <ostream>
 #include <sstream>
 
-namespace httpxx_types {
+namespace httptypes {
 
 static inline std::string get_field(http_parser_url *parser,
                                     const std::string &url, int field) {
@@ -60,7 +60,8 @@ std::string URL::path() const { return m_path; }
 void URL::set_path(const std::string &path) { m_path = path; }
 
 std::string URL::full_path() const {
-  std::stringstream s(path());
+  std::stringstream s;
+  s << path();
 
   auto q = m_query.str();
   if (q.size() > 0) {
@@ -121,4 +122,4 @@ std::string URL::str() const {
   return os.str();
 }
 
-} // namespace httpxx_types
+} // namespace httptypes

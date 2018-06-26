@@ -1,6 +1,6 @@
 #include <httpxx-types/methods.hpp>
 
-namespace httpxx_types {
+namespace httptypes {
 
 const char *method_name(Method method) {
   switch (method) {
@@ -26,4 +26,4 @@ std::ostream &operator<<(std::ostream &os, Method m) {
   return os;
 }
 
-} // namespace httpxx_types
+} // namespace httptypes

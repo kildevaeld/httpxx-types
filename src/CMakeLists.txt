@@ -8,11 +8,11 @@ set(SOURCES
     methods.cpp
 )
 
-add_library(httpxx_types ${SOURCES})
+add_library(httptypes++ ${SOURCES})
 
-target_link_libraries(httpxx_types ${HTTP_PARSER_LIBRARIES})
+target_link_libraries(httptypes++ ${HTTP_PARSER_LIBRARIES} ${STREAMS_CPP_LIBRARIES})
 
-target_include_directories(httpxx_types PUBLIC
+target_include_directories(httptypes++ PUBLIC
     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
     $<BUILD_INTERFACE:${HTTP_PARSER_INCLUDE_DIRS}>

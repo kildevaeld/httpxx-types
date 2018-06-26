@@ -1,7 +1,7 @@
 #include <httpxx-types/status-codes.hpp>
 #include <map>
 
-namespace httpxx_types {
+namespace httptypes {
 static std::map<StatusCode, const char *> statusText = {
     {StatusContinue, "Continue"},
     {StatusSwitchingProtocols, "Switching Protocols"},
@@ -74,4 +74,4 @@ std::ostream &operator<<(std::ostream &os, StatusCode code) {
   os << statuscode_text(code);
   return os;
 }
-} // namespace httpxx_types
+} // namespace httptypes

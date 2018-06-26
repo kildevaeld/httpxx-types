@@ -1,10 +1,10 @@
 #pragma once
 #include <httpxx-types/header.hpp>
 #include <httpxx-types/methods.hpp>
-#include <httpxx-types/stream.hpp>
 #include <httpxx-types/url.hpp>
+#include <streams++/streams.hpp>
 
-namespace httpxx_types {
+namespace httptypes {
 
 enum class Version { Nine, OneOne, Two };
 
@@ -32,9 +32,9 @@ public:
   Method method() const;
   Request &set_method(const Method method);
 
-  ReadableStream *body() const;
-  Request &set_body(ReadableStream *stream);
-  Request &set_body(std::unique_ptr<ReadableStream> &&stream);
+  streams::ReadableStream *body() const;
+  Request &set_body(streams::ReadableStream *stream);
+  Request &set_body(std::unique_ptr<streams::ReadableStream> &&stream);
 
   Header &header();
   void set_header(const Header &header);
@@ -45,7 +45,7 @@ public:
     return *this;
   }
 
-  void write(WritableStream &stream);
+  void write(streams::WritableStream &stream);
 
   friend std::ostream &operator<<(std::ostream &, const Request &);
 
@@ -53,4 +53,4 @@ private:
   std::unique_ptr<internal::RequestPrivate> d;
 };
 
-} // namespace httpxx_types
+} // namespace httptypes

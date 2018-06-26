@@ -1,6 +1,6 @@
 #include <httpxx-types/header.hpp>
 
-namespace httpxx_types {
+namespace httptypes {
 
 bool CaseInsensitiveCompare::operator()(const std::string &a,
                                         const std::string &b) const noexcept {
@@ -11,4 +11,4 @@ bool CaseInsensitiveCompare::operator()(const std::string &a,
                                       });
 }
 
-} // namespace httpxx_types
+} // namespace httptypes

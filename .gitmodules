@@ -1,3 +1,6 @@
 [submodule "vendor/http-parser"]
 	path = vendor/http-parser
 	url = git@github.com:nodejs/http-parser.git
+[submodule "vendor/streamscpp"]
+	path = vendor/streamscpp
+	url = git@github.com:kildevaeld/streamscpp
