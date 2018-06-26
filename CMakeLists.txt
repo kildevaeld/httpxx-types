@@ -12,3 +12,5 @@ find_package(http_parser)
 #add_library(http_parser ${PROJECT_SOURCE_DIR}/vendor/http-parser/http_parser.c)
 
 add_subdirectory(src)
+
+add_subdirectory(example)

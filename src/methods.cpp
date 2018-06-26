@@ -4,21 +4,26 @@ namespace httpxx_types {
 
 const char *method_name(Method method) {
   switch (method) {
-  case Post:
+  case Method::Post:
     return "POST";
-  case Get:
+  case Method::Get:
     return "GET";
-  case Put:
+  case Method::Put:
     return "PUT";
-  case Patch:
+  case Method::Patch:
     return "PATCH";
-  case Option:
+  case Method::Option:
     return "OPTION";
-  case Delete:
+  case Method::Delete:
     return "DELETE";
-  case Head:
+  case Method::Head:
     return "HEAD";
   }
+}
+
+std::ostream &operator<<(std::ostream &os, Method m) {
+  os << method_name(m);
+  return os;
 }
 
 } // namespace httpxx_types

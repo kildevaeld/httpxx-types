@@ -1,5 +1,5 @@
 #pragma once
-
+#include <ostream>
 namespace httpxx_types {
 enum StatusCode {
   // Informal
@@ -68,6 +68,8 @@ enum StatusCode {
   StatusNotExtended = 510,                  // RFC 2774, 7
   StatusNetworkAuthenticationRequired = 511 // RFC 6585, 6
 };
+
+std::ostream &operator<<(std::ostream &, StatusCode);
 
 const char *statuscode_text(StatusCode status);
 /*bool statuscode_is_redirection(StatusCode);

@@ -69,4 +69,9 @@ static std::map<StatusCode, const char *> statusText = {
     {StatusNetworkAuthenticationRequired, "Network Authentication Required"}};
 
 const char *statuscode_text(StatusCode status) { return statusText.at(status); }
+
+std::ostream &operator<<(std::ostream &os, StatusCode code) {
+  os << statuscode_text(code);
+  return os;
+}
 } // namespace httpxx_types

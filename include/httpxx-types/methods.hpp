@@ -1,8 +1,9 @@
 #pragma once
+#include <ostream>
 
 namespace httpxx_types {
 
-enum Method {
+enum class Method {
   Get,
   Post,
   Put,
@@ -13,4 +14,6 @@ enum Method {
 };
 
 const char *method_name(Method method);
+
+std::ostream &operator<<(std::ostream &os, Method m);
 }
