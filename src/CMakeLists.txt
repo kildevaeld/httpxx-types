@@ -2,7 +2,10 @@
 set(SOURCES
     header.cpp
     url.cpp
+    methods.cpp
+    request.cpp
     status-codes.cpp
+    methods.cpp
 )
 
 add_library(httpxx_types ${SOURCES})
